@@ -7,5 +7,14 @@
     <context:component-scan base-package="com.company.diplomweb"/>
     
     <gui:screens base-packages="com.company.diplomweb.web"/>
+    <bean id="diplomweb_proxyCreator" class="com.haulmont.cuba.web.sys.remoting.WebRemoteProxyBeanCreator">
+        <property name="serverSelector" ref="cuba_ServerSelector"/>
+        <property name="remoteServices">
+            <map>
+                <entry key="diplomweb_AlgebraLieService" value="com.company.diplomweb.service.AlgebraLieService"/>
+                <entry key="diplomweb_MatrciesService" value="com.company.diplomweb.service.MatricesService"/>
+            </map>
+        </property>
+    </bean>
 
 </beans>
