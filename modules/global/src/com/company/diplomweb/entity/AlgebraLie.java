@@ -7,42 +7,41 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.ArrayList;
 
-@Table(name = "DIPLOMWEB_ALGEBRA_LIE")
-@Entity(name = "diplomweb_AlgebraLie")
-public class AlgebraLie extends StandardEntity {
+
+public class AlgebraLie {
     private static final long serialVersionUID = -8383281355009735099L;
 
-    @Column(name = "TYPE_")
+
     private String type;
 
-    @Column(name = "MATRICES_H")
-    private ArrayList<int[][]> matricesH;
 
-    @Column(name = "SPECIFIC_MATRICES")
-    private ArrayList<int[][]> specificMatrices;
+    private ArrayList<Integer[][]> matricesH;
 
-    @Column(name = "VECTORS_A")
+
+    private ArrayList<Integer[][]> specificMatrices;
+
+
     private ArrayList<GeomVector> vectorsA;
 
-    @Column(name = "VECTORS_B")
+
     private ArrayList<GeomVector> vectorsB;
 
     public AlgebraLie() {
     }
 
-    public ArrayList<int[][]> getSpecificMatrices() {
+    public ArrayList<Integer[][]> getSpecificMatrices() {
         return specificMatrices;
     }
 
-    public void setSpecificMatrices(ArrayList<int[][]> specificMatrices) {
+    public void setSpecificMatrices(ArrayList<Integer[][]> specificMatrices) {
         this.specificMatrices = specificMatrices;
     }
 
-    public ArrayList<int[][]> getMatricesH() {
+    public ArrayList<Integer[][]> getMatricesH() {
         return matricesH;
     }
 
-    public void setMatricesH(ArrayList<int[][]> matricesH) {
+    public void setMatricesH(ArrayList<Integer[][]> matricesH) {
         this.matricesH = matricesH;
     }
 

@@ -6,12 +6,12 @@ import com.haulmont.cuba.core.entity.BaseUuidEntity;
 
 import java.util.ArrayList;
 
-@MetaClass(name = "diplomweb_NewEntity")
-public class GeomVector extends BaseUuidEntity {
+
+public class GeomVector {
     private static final long serialVersionUID = 4782222288099675295L;
 
 
-    @MetaProperty
+
     private ArrayList<Integer> coordinates;
 
     public GeomVector(ArrayList<Integer> coordinates) {

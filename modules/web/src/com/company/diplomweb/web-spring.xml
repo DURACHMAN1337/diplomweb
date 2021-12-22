@@ -11,8 +11,10 @@
         <property name="serverSelector" ref="cuba_ServerSelector"/>
         <property name="remoteServices">
             <map>
-                <entry key="diplomweb_AlgebraLieService" value="com.company.diplomweb.service.AlgebraLieService"/>
                 <entry key="diplomweb_MatrciesService" value="com.company.diplomweb.service.MatricesService"/>
+                <entry key="diplomweb_OncLieService" value="com.company.diplomweb.service.OncLieService"/>
+                <entry key="diplomweb_SlncLieService" value="com.company.diplomweb.service.SlncLieService"/>
+                <entry key="diplomweb_SpncLieService" value="com.company.diplomweb.service.SpncLieService"/>
             </map>
         </property>
     </bean>

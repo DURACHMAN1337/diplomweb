@@ -7,15 +7,15 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-@Service(AlgebraLieService.NAME)
-public class OncServiceBean implements AlgebraLieService {
+@Service(SpncLieService.NAME)
+public class SpncLieServiceBean implements SpncLieService {
 
     @Inject
-    MatricesServiceBean matricesServiceBean;
+    private MatricesService matricesService;
 
     @Override
     public String getAlgebraName() {
-        return  "Lie Algebra O_n(C)";
+        return "Lie Algebra Sp_n(C)";
     }
 
     @Override
@@ -41,8 +41,22 @@ public class OncServiceBean implements AlgebraLieService {
     public ArrayList<int[][]> generateSpecificMatrices(int dim) {
         ArrayList<int[][]> result = new ArrayList<>();
         if (dim % 2 == 0) {
+            int[][] matrix_fi;
             int[][] matrix_fij_1;
             int[][] matrix_fi_j;
+            int[][] nullMatrix = new int[dim][dim];
+
+            //Генерация f_i
+            for (int i = 0; i < dim; i++) {
+                for (int j = dim - 1; j >= 0; j--) {
+                    matrix_fi = new int[dim][dim];
+                    if (Arrays.deepEquals(matrix_fi, nullMatrix)) {
+                        matrix_fi[i][j] = -1;
+                        i++;
+                        result.add(matrix_fi);
+                    }
+                }
+            }
 
             //Генерация f_ij
             for (int i = 0; i < dim / 2; i++) {
@@ -62,7 +76,7 @@ public class OncServiceBean implements AlgebraLieService {
                     int k = dim / 2;
                     if ((i > k && j < k && (i + j != dim - 1)) || (i < k && j > k && (i + j != dim - 1))) {
                         matrix_fi_j = new int[dim][dim];
-                        matrix_fi_j[i][j] = -1;
+                        matrix_fi_j[i][j] = 1;
                         matrix_fi_j[(dim - 1) - j][(dim - 1) - i] = 1;
                         result.add(matrix_fi_j);
                     }
@@ -72,6 +86,7 @@ public class OncServiceBean implements AlgebraLieService {
             System.err.println("Размерность должна быть вида 2m");
         }
         return result;
+
     }
 
     @Override
@@ -88,14 +103,14 @@ public class OncServiceBean implements AlgebraLieService {
 
         for (int i = 0; i < h.size(); i++) {
             for (int[][] matrix : basis) {
-                int[][] newMatrix = matricesServiceBean.matricesMinus(matricesServiceBean.multiplyMatrices(h.get(i), matrix), matricesServiceBean.multiplyMatrices(matrix, h.get(i)));
+                int[][] newMatrix = matricesService.matricesMinus(matricesService.multiplyMatrices(h.get(i), matrix), matricesService.multiplyMatrices(matrix, h.get(i)));
                 temp.add(newMatrix);
                 if (Arrays.deepEquals(newMatrix, nullMatrix)) {
                     vectorsA.add(0);
                 } else {
                     if (Arrays.deepEquals(newMatrix, matrix)) {
                         vectorsA.add(1);
-                    } else if (Arrays.deepEquals(newMatrix, matricesServiceBean.multiplyMatrixByNumber(matrix, -1))) {
+                    } else if (Arrays.deepEquals(newMatrix, matricesService.multiplyMatrixByNumber(matrix, -1))) {
                         vectorsA.add(-1);
                     } else {
                         vectorsA.add(2);
@@ -127,7 +142,6 @@ public class OncServiceBean implements AlgebraLieService {
                 }
             }
             vectorsB.add(new GeomVector(newCoordinates));
-
         }
         return vectorsB;
     }

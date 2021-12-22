@@ -7,8 +7,9 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-@Service(AlgebraLieService.NAME)
-public class SlncServiceBean implements AlgebraLieService {
+@Service(SlncLieService.NAME)
+public class SlncLieServiceBean implements SlncLieService {
+
     @Inject
     private MatricesService matricesService;
 

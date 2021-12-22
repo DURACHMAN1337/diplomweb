@@ -3,18 +3,20 @@ package com.company.diplomweb.service;
 import com.company.diplomweb.entity.GeomVector;
 import org.springframework.stereotype.Service;
 
+
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-@Service(AlgebraLieService.NAME)
-public class SpncServiceBean implements AlgebraLieService {
+@Service(OncLieService.NAME)
+public class OncLieServiceBean implements OncLieService {
+
     @Inject
     private MatricesService matricesService;
 
     @Override
     public String getAlgebraName() {
-        return "Lie Algebra Sp_n(C)";
+        return  "Lie Algebra O_n(C)";
     }
 
     @Override
@@ -40,22 +42,8 @@ public class SpncServiceBean implements AlgebraLieService {
     public ArrayList<int[][]> generateSpecificMatrices(int dim) {
         ArrayList<int[][]> result = new ArrayList<>();
         if (dim % 2 == 0) {
-            int[][] matrix_fi;
             int[][] matrix_fij_1;
             int[][] matrix_fi_j;
-            int[][] nullMatrix = new int[dim][dim];
-
-            //Генерация f_i
-            for (int i = 0; i < dim; i++) {
-                for (int j = dim - 1; j >= 0; j--) {
-                    matrix_fi = new int[dim][dim];
-                    if (Arrays.deepEquals(matrix_fi, nullMatrix)) {
-                        matrix_fi[i][j] = -1;
-                        i++;
-                        result.add(matrix_fi);
-                    }
-                }
-            }
 
             //Генерация f_ij
             for (int i = 0; i < dim / 2; i++) {
@@ -75,7 +63,7 @@ public class SpncServiceBean implements AlgebraLieService {
                     int k = dim / 2;
                     if ((i > k && j < k && (i + j != dim - 1)) || (i < k && j > k && (i + j != dim - 1))) {
                         matrix_fi_j = new int[dim][dim];
-                        matrix_fi_j[i][j] = 1;
+                        matrix_fi_j[i][j] = -1;
                         matrix_fi_j[(dim - 1) - j][(dim - 1) - i] = 1;
                         result.add(matrix_fi_j);
                     }
@@ -85,7 +73,6 @@ public class SpncServiceBean implements AlgebraLieService {
             System.err.println("Размерность должна быть вида 2m");
         }
         return result;
-
     }
 
     @Override
@@ -141,6 +128,7 @@ public class SpncServiceBean implements AlgebraLieService {
                 }
             }
             vectorsB.add(new GeomVector(newCoordinates));
+
         }
         return vectorsB;
     }

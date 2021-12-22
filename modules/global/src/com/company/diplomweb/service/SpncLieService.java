@@ -4,8 +4,8 @@ import com.company.diplomweb.entity.GeomVector;
 
 import java.util.ArrayList;
 
-public interface AlgebraLieService {
-    String NAME = "diplomweb_AlgebraLieService";
+public interface SpncLieService {
+    String NAME = "diplomweb_SpncLieService";
 
     String getAlgebraName();
 
@@ -16,5 +16,4 @@ public interface AlgebraLieService {
     ArrayList<GeomVector> generateVectorsA(ArrayList<int[][]> h, ArrayList<int[][]> f);
 
     ArrayList<GeomVector> generateVectorsB(ArrayList<GeomVector> vectorsA, int modP);
-
 }
