@@ -2,6 +2,23 @@
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://algebraLieScreen.caption"
         messagesPack="com.company.diplomweb.web.screens">
-    <layout>
+    <actions>
+        <action id="generatePdfAction"/>
+    </actions>
+    <layout expand="fieldsVbox">
+        <vbox id="fieldsVbox" spacing="false" width="100%">
+            <label id="lieLabel" align="TOP_CENTER" value="msg://lie_label" stylename="h1"/>
+            <lookupField id="algebraLookupField" align="TOP_CENTER" caption="msg://algebraLookupField.caption"
+                         optionsEnum="com.company.diplomweb.entity.AlgebraType" required="true"
+                         requiredMessage="msg://algebraLookupField.requiredMessage"/>
+            <lookupField id="dimLookupField" required="true"
+                         requiredMessage="msg://dimLookupField.requiredMessage"
+                         caption="msg://dimLookupField.caption" align="TOP_CENTER" stylename="friendly"/>
+            <lookupField id="moduleLookupField" required="true" align="TOP_CENTER"
+                         requiredMessage="msg://primeNumberLookupField.requiredMessage"
+                         caption="msg://moduleLookupField.caption"/>
+            <button id="calculateButton" align="TOP_CENTER" caption="msg://calculateButton.caption"/>
+
+        </vbox>
     </layout>
 </window>
