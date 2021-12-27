@@ -15,7 +15,7 @@ public class GeomVector {
     private ArrayList<Integer> coordinates;
 
     public GeomVector(ArrayList<Integer> coordinates) {
-
+        this.coordinates=coordinates;
     }
 
     public ArrayList<Integer> getCoordinates() {
