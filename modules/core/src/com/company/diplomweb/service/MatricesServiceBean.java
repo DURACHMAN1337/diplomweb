@@ -3,6 +3,7 @@ package com.company.diplomweb.service;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service(MatricesService.NAME)
 public class MatricesServiceBean implements MatricesService {
@@ -27,22 +28,35 @@ public class MatricesServiceBean implements MatricesService {
     }
 
     @Override
-    public void printListOfMatrices(ArrayList<int[][]> list) {
-        for (int[][] ints : list) {
-            printMatrix(ints);
-            System.out.println();
-        }
+    public void printListOfMatrices(List<int[][]> list) {
+        System.out.println(getMatrixListStringView(list));
     }
 
     @Override
     public void printMatrix(int[][] matrix) {
-        for (int[] ints : matrix) {
-            for (int j = 0; j < ints.length; j++) {
-                System.out.print(ints[j] + "\t");
-            }
-            System.out.println();
+        System.out.println(getMatrixStringView(matrix));
+    }
+
+    @Override
+    public String getMatrixListStringView(List<int[][]> list){
+        StringBuilder view = new StringBuilder();
+        for (int[][] ints : list) {
+            view.append(getMatrixStringView(ints)).append("\n");
         }
-        System.out.println();
+        return String.valueOf(view);
+    }
+
+    @Override
+    public String getMatrixStringView(int[][] matrix){
+        StringBuilder view = new StringBuilder();
+        for (int[] ints : matrix) {
+            for (int anInt : ints) {
+                view.append(anInt).append("\t");
+            }
+            view.append("\n");
+        }
+        view.append("\n");
+        return String.valueOf(view);
     }
 
     @Override
