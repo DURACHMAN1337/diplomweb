@@ -1,4 +1,4 @@
-package com.company.diplomweb.service.repor;
+package com.company.diplomweb.service.report;
 
 import com.company.diplomweb.entity.GeomVector;
 import com.company.diplomweb.service.*;
