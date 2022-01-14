@@ -1,4 +1,4 @@
-package com.company.diplomweb.service.repor;
+package com.company.diplomweb.service.report;
 
 import java.util.List;
 import java.util.Map;
