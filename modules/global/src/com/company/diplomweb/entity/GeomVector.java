@@ -30,9 +30,7 @@ public class GeomVector {
         ArrayList<Integer> newCoordinates = new ArrayList<>(v1.getCoordinates());
         for (int i = 0; i < newCoordinates.size(); i++)
             newCoordinates.set(i, (newCoordinates.get(i) * a) % p);
-        GeomVector result = new GeomVector(newCoordinates);
-        System.out.println(a + " * " + v1 + " = " + result);
-        return result;
+        return new GeomVector(newCoordinates);
     }
 
     public static GeomVector multiplyByNumber(GeomVector v1, int a) {
@@ -61,10 +59,11 @@ public class GeomVector {
         for (int i = 1; i < vectors.size(); i++) {
             newCoordinates = GeomVector.sumVectors(p, new GeomVector(newCoordinates), vectors.get(i)).getCoordinates();
         }
-        GeomVector result = new GeomVector(newCoordinates);
-        System.out.println("Сумма этих векторов: " + result);
-        return result;
+
+        return new GeomVector(newCoordinates);
     }
+
+
 
     public static GeomVector sumVectors(ArrayList<GeomVector> vectors) {
         ArrayList<Integer> newCoordinates = new ArrayList<>(vectors.get(0).getCoordinates());

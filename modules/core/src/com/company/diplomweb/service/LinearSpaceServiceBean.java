@@ -12,8 +12,8 @@ import java.util.Set;
 public class LinearSpaceServiceBean implements LinearSpaceService {
 
     @Override
-    public Set<GeomVector> generateLinearSpace(ArrayList<ArrayList<Integer>> combinations, ArrayList<GeomVector> vectors, int mod) {
-        Set<GeomVector> linearSpace = new HashSet<GeomVector>(vectors);
+    public Set<GeomVector> generateLinearSpace(List<ArrayList<Integer>> combinations, ArrayList<GeomVector> vectors, int mod) {
+        Set<GeomVector> linearSpace = new HashSet<>(vectors);
         for (ArrayList<Integer> combination : combinations) {
             linearSpace.add(calculateLinearCombination(vectors, combination, mod));
         }
