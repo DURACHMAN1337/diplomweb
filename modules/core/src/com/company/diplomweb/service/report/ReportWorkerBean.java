@@ -10,9 +10,9 @@ import java.util.*;
 
 @Component(ReportWorker.NAME)
 public class ReportWorkerBean implements ReportWorker {
-    public static final String oncLie = "Onc";
-    public static final String slncLie = "Slnc";
-    public static final String spncLie = "Spnc";
+    public static final String oncLie = "O_n(C)";
+    public static final String slncLie = "Sl_n(C)";
+    public static final String spncLie = "Sp_n(C)";
     public static final String algebraNamePrefix = "Линейный код ассоцированный с присоединённым представлением для : \"";
     public static final String hMatrixPrefix = "-----------------Матрицы  h-----------------\n\n";
     public static final String specialMatrixPrefix = "-----------------Специальные Матрицы  -----------------\n\n";

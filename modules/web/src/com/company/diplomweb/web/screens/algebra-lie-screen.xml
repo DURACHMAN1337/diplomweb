@@ -17,7 +17,8 @@
             <lookupField id="moduleLookupField" required="true" align="TOP_CENTER"
                          requiredMessage="msg://primeNumberLookupField.requiredMessage"
                          caption="msg://moduleLookupField.caption"/>
-            <button id="calculateButton" align="TOP_CENTER" caption="msg://calculateButton.caption"/>
+            <button id="calculateButton" align="TOP_CENTER" caption="msg://calculateButton.caption"
+            />
 
         </vbox>
     </layout>

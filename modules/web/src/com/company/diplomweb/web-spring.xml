@@ -17,6 +17,7 @@
                 <entry key="diplomweb_SpncLieService" value="com.company.diplomweb.service.SpncLieService"/>
                 <entry key="diplomweb_GeomVectorService" value="com.company.diplomweb.service.GeomVectorService"/>
                 <entry key="diplomweb_LinearSpaceService" value="com.company.diplomweb.service.LinearSpaceService"/>
+                <entry key="diplomweb_ExecuteReportService" value="com.company.diplomweb.service.ExecuteReportService"/>
             </map>
         </property>
     </bean>

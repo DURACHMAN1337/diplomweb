@@ -1,8 +1,11 @@
 package com.company.diplomweb.web.screens;
 
 import com.company.diplomweb.entity.AlgebraType;
-import com.haulmont.cuba.gui.components.HasValue;
-import com.haulmont.cuba.gui.components.LookupField;
+import com.company.diplomweb.service.ExecuteReportService;
+import com.haulmont.cuba.core.entity.FileDescriptor;
+import com.haulmont.cuba.gui.AppConfig;
+import com.haulmont.cuba.gui.components.*;
+import com.haulmont.cuba.gui.export.ExportDisplay;
 import com.haulmont.cuba.gui.screen.Screen;
 import com.haulmont.cuba.gui.screen.Subscribe;
 import com.haulmont.cuba.gui.screen.UiController;
@@ -18,6 +21,17 @@ public class AlgebraLieScreen extends Screen {
     private LookupField dimLookupField;
     @Inject
     private LookupField moduleLookupField;
+    @Inject
+    private LookupField<AlgebraType> algebraLookupField;
+    @Inject
+    private ExecuteReportService executeReportService;
+    @Inject
+    private ExportDisplay exportDisplay;
+
+    @Subscribe("calculateButton")
+    public void onCalculateButtonClick(Button.ClickEvent event) {
+        exportDisplay.show(executeReport());
+    }
 
     @Subscribe
     public void onAfterInit(AfterInitEvent event) {
@@ -37,5 +51,10 @@ public class AlgebraLieScreen extends Screen {
             dimLookupField.setOptionsList(evenNumbers);
     }
 
-
+    public FileDescriptor executeReport(){
+        String algebraName = algebraLookupField.getValue().getId();
+        Number dim = (Number) dimLookupField.getValue();
+        Number modP = (Number) moduleLookupField.getValue();
+        return executeReportService.execute(algebraName,dim,modP);
+    }
 }
